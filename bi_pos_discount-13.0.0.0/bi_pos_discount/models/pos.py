@@ -221,11 +221,12 @@ class ReportSaleDetailsInherit(models.AbstractModel):
 		date_start = fields.Datetime.to_string(date_start)
 		date_stop = fields.Datetime.to_string(date_stop)
 
+		configs = configs if isinstance(configs, list) else configs.ids
 		orders = self.env['pos.order'].search([
 			('date_order', '>=', date_start),
 			('date_order', '<=', date_stop),
 			('state', 'in', ['paid','invoiced','done']),
-			('config_id', 'in', configs.ids)])
+			('config_id', 'in', configs)])
 
 		user_currency = self.env.user.company_id.currency_id
 
