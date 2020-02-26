@@ -28,13 +28,9 @@ from odoo import api, models
 class ProductAutoBarcode(models.Model):
     _inherit = 'product.product'
 
-    @api.model
-    def create(self, vals):
-        res = super(ProductAutoBarcode, self).create(vals)
-        ean = generate_ean(str(res.id))
-
-        res.barcode = ean
-        return res
+    def button_generate_barcode(self):
+        ean = generate_ean(str(self.id))
+        self.barcode = ean
 
 
 def ean_checksum(eancode):
@@ -82,5 +78,14 @@ def generate_ean(ean):
     if len(ean) < 13:
         ean = ean + '0' * (13 - len(ean))
     return ean[:-1] + str(ean_checksum(ean))
+
+
+class ProductTemplateAutoBarcode(models.Model):
+    _inherit = 'product.template'
+
+    def button_generate_barcode(self):
+        ean = generate_ean(str(self.id))
+        self.barcode = ean
+
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

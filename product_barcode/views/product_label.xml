@@ -47,5 +47,38 @@
                 </div>
             </t>
         </template>
+
+  <record id="view_add_generate_barcode_button" model="ir.ui.view">
+        <field name="name">view.add.generate.barcode.button</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="arch" type="xml">
+
+                 <xpath expr="//field[@name='barcode']" position="after">
+                      <button 
+                    type ="object" 
+                    name = "button_generate_barcode" string ="Generate Barcode" 
+                    icon ="fa-plus-circle">
+                </button>
+                </xpath>
+        </field>
+    </record>
+
+
+ <record id="view_add_generate_barcode_button_product" model="ir.ui.view">
+        <field name="name">view.add.generate.barcode.button.product</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+
+                 <xpath expr="//field[@name='barcode']" position="after">
+                      <button 
+                    type ="object" 
+                    name = "button_generate_barcode" string ="Generate Barcode" 
+                    icon ="fa-plus-circle">
+                </button>
+                </xpath>
+        </field>
+    </record>
     </data>
 </odoo>
