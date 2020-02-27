@@ -20,13 +20,14 @@
 ##############################################################################
 {
     'name': "Print POS Session Report",
-    'version': "10.0.0.1",
+    'version': "13.0.0.0",
     'summary': "",
     'category': 'Point Of Sale',
     "license": "AGPL-3",
     'description': """
     """,
     'author': "Sitaram",
+    'website':"http://www.sitaramsolutions.com",
     'depends': ['base', 'point_of_sale'],
     'data': [
         'reports/pos_report.xml',
